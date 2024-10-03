@@ -37,7 +37,46 @@ public class UserRepository {
     public List<User> getAll() {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createQuery("SELECT u FROM User u", User.class).getResultList();
+            return em.createQuery("SELECT u FROM User u ORDER BY u.id", User.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void delete(Long id) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = null;
+        try {
+            transaction = em.getTransaction();
+            transaction.begin();
+            User user = em.find(User.class, id);
+            if (user != null) {
+                em.remove(user);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void update(User user) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = null;
+        try {
+            transaction = em.getTransaction();
+            transaction.begin();
+            em.merge(user);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
         } finally {
             em.close();
         }

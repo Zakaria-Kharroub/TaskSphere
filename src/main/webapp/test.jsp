@@ -5,39 +5,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User List</title>
-    <!-- Include Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>users manage</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center">HAMIIID</h1>
+    <h1 class="text-center">salaaaam</h1>
     <h2 class="text-center">User List</h2>
-<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button><!-- Add User Modal -->
-<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="users" method="post" class="p-4 border rounded bg-light shadow-sm">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name:</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Add User</button>
-                </form>
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+
+<%--    modal ajouter user--%>
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="users" method="post" class="p-4 border rounded bg-light shadow-sm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Add User</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-    <!-- Table with Bootstrap styles -->
+<%--    modal update--%>
+    <div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateUserModalLabel">Update User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="users" method="post" class="p-4 border rounded bg-light shadow-sm">
+                        <input type="hidden" id="updateId" name="id">
+                        <input type="hidden" name="action" value="update">
+                        <div class="mb-3">
+                            <label for="updateName" class="form-label">Name:</label>
+                            <input type="text" id="updateName" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateEmail" class="form-label">Email:</label>
+                            <input type="email" id="updateEmail" name="email" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Update User</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <table class="table table-striped table-bordered mt-4">
         <thead class="thead-dark">
         <tr>
@@ -54,15 +81,19 @@
                 <td>${user.name}</td>
                 <td>${user.email}</td>
                 <td>
-                    <a href="edit?id=${user.id}" class="btn btn-primary btn-sm">Edit</a>
-                    <a href="delete?id=${user.id}" class="btn btn-danger btn-sm">Delete</a>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#updateUserModal" onclick="document.getElementById('updateId').value='${user.id}'; document.getElementById('updateName').value='${user.name}'; document.getElementById('updateEmail').value='${user.email}';">Update</button>
+                    <form action="users" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="${user.id}">
+                        <button type="submit" name="action" value="delete" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
 
-<!-- Include Bootstrap JS and dependencies -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script></script>
 </body>
 </html>

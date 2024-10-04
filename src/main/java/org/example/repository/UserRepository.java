@@ -81,5 +81,13 @@ public class UserRepository {
             em.close();
         }
     }
-}
 
+    public User findById(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(User.class, id);
+        } finally {
+            em.close();
+        }
+    }
+}

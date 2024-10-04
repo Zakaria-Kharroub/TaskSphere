@@ -59,6 +59,13 @@
             <version>1.2</version>
         </dependency>
 
+<!--        criptage-->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+
 
     </dependencies>
 

@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.domaine.Role;
 import org.example.domaine.User;
 import org.example.repository.UserRepository;
 
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 @WebServlet(name = "UserServlet", urlPatterns = {"/users"})
 public class UserServlet extends HttpServlet {
 
@@ -21,12 +24,6 @@ public class UserServlet extends HttpServlet {
         userRepository = new UserRepository();
     }
 
-//    @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/test.jsp");
-//        requestDispatcher.forward(request, response);
-//    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<User> users = userRepository.getAll();
@@ -34,7 +31,6 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/test.jsp");
         requestDispatcher.forward(request, response);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -48,26 +44,28 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-
-
-
     private void save(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        String roleParam = req.getParameter("role");
+        Role role = Role.valueOf(roleParam);
 
-        if (name == null || email == null) {
-            resp.getWriter().write("Missing user information");
+        if (name == null || email == null || password == null) {
+            resp.getWriter().write("name, email and password are required");
             return;
         }
+
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
         User user = new User();
         user.setName(name);
         user.setEmail(email);
+        user.setPassword(hashedPassword);
+        user.setRole(role);
 
         userRepository.save(user);
-//       reidrect to /users
         resp.sendRedirect("users");
-
     }
 
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -80,11 +78,24 @@ public class UserServlet extends HttpServlet {
         Long id = Long.parseLong(req.getParameter("id"));
         String name = req.getParameter("name");
         String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        String roleParam = req.getParameter("role");
+        Role role = Role.valueOf(roleParam);
 
-        User user = new User();
-        user.setId(id);
+        User user = userRepository.findById(id);
+        if (user == null) {
+            resp.getWriter().write("utilisateur not found");
+            return;
+        }
+
         user.setName(name);
         user.setEmail(email);
+        user.setRole(role);
+
+        if (password != null && !password.isEmpty()) {
+            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+            user.setPassword(hashedPassword);
+        }
 
         userRepository.update(user);
         resp.sendRedirect("users");

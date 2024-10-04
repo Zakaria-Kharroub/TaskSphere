@@ -7,9 +7,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="${DB_URL}"/>
-            <property name="jakarta.persistence.jdbc.user" value="${DB_USERNAME}"/>
-            <property name="jakarta.persistence.jdbc.password" value="${DB_PASSWORD}"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/devsync"/>
+            <property name="jakarta.persistence.jdbc.user" value="BatiCuisine"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

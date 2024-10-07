@@ -2,7 +2,7 @@ package org.example.controller;
 
 import org.example.domaine.Role;
 import org.example.domaine.User;
-import org.example.repository.UserRepository;
+import org.example.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,15 +18,15 @@ import org.mindrot.jbcrypt.BCrypt;
 @WebServlet(name = "UserServlet", urlPatterns = {"/users"})
 public class UserServlet extends HttpServlet {
 
-    private UserRepository userRepository;
+    private UserService userService;
 
     public void init() throws ServletException {
-        userRepository = new UserRepository();
+        userService = new UserService();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List<User> users = userRepository.getAll();
+        List<User> users = userService.getAllUsers();
         request.setAttribute("users", users);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/test.jsp");
         requestDispatcher.forward(request, response);
@@ -64,13 +64,13 @@ public class UserServlet extends HttpServlet {
         user.setPassword(hashedPassword);
         user.setRole(role);
 
-        userRepository.save(user);
+        userService.saveUser(user);
         resp.sendRedirect("users");
     }
 
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long id = Long.parseLong(req.getParameter("id"));
-        userRepository.delete(id);
+        userService.deleteUser(id);
         resp.sendRedirect("users");
     }
 
@@ -82,7 +82,7 @@ public class UserServlet extends HttpServlet {
         String roleParam = req.getParameter("role");
         Role role = Role.valueOf(roleParam);
 
-        User user = userRepository.findById(id);
+        User user = userService.findUserById(id);
         if (user == null) {
             resp.getWriter().write("utilisateur not found");
             return;
@@ -97,7 +97,7 @@ public class UserServlet extends HttpServlet {
             user.setPassword(hashedPassword);
         }
 
-        userRepository.update(user);
+        userService.updateUser(user);
         resp.sendRedirect("users");
     }
 }

@@ -10,11 +10,39 @@
         <servlet-class>org.example.controller.UserServlet</servlet-class>
     </servlet>
 
+<!--    servlet pour login-->
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>org.example.controller.AuthServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>org.example.controller.LogoutServlet</servlet-class>
+    </servlet>
+
+
     <!-- Servlet Mapping -->
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
 
     <!-- JSP Mapping Example (optional) -->
 <!--    <jsp-config>-->

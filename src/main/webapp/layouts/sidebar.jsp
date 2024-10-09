@@ -15,13 +15,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/testmaven02/tags">
                     <i class="fas fa-tags"></i>
                     Tags
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="">
                     <i class="fas fa-tasks"></i>
                     Tasks
                 </a>

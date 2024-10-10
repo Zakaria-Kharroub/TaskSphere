@@ -72,9 +72,10 @@
                                     <td>${task.creator.name}</td>
                                     <td>${task.assignee.name}</td>
                                     <td>
-<%--                                        <c:forEach var="tag" items="${task.tags}">--%>
-<%--                                            <span class="badge bg-primary">${tag.name}</span>--%>
-<%--                                        </c:forEach>--%>
+                                        <c:forEach var="tag" items="${task.tags}" varStatus="loop">
+                                            <span class="badge bg-primary">${tag.name}</span>
+                                            <c:if test="${!loop.last}">&nbsp;</c:if>
+                                        </c:forEach>
                                     </td>
                                     <td>
                                         <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#updateTaskModal">

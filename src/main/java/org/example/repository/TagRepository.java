@@ -23,7 +23,7 @@ public class TagRepository {
             transaction = em.getTransaction();
             transaction.begin();
             em.persist(tag);
-            transaction.commit();;
+            transaction.commit();
         }catch (Exception e){
             if (transaction != null && transaction.isActive()){
                 transaction.rollback();
@@ -37,7 +37,7 @@ public class TagRepository {
     public List<Tag> getAll(){
         EntityManager em = emf.createEntityManager();
         try{
-            return em.createQuery("SELECT t FROM Tag t ORDER BY t.id",Tag.class).getResultList();
+            return em.createQuery("SELECT DISTINCT t FROM Tag t LEFT JOIN FETCH t.tasks ORDER BY t.id", Tag.class).getResultList();
         }finally {
             em.close();
         }
@@ -56,7 +56,7 @@ public class TagRepository {
             transaction.commit();
         }catch (Exception e){
             if (transaction != null && transaction.isActive()){
-                transaction.commit();
+                transaction.rollback();
             }
             e.printStackTrace();
         }finally {

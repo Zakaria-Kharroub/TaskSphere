@@ -16,7 +16,6 @@ public class TaskRepository {
         this.emf = Persistence.createEntityManagerFactory("myJPAUnit");
     }
 
-
     public void save(Task task){
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
@@ -35,23 +34,22 @@ public class TaskRepository {
         }
     }
 
-
-
     public List<Task> getAll(){
-        EntityManager em =emf.createEntityManager();
-        try{
-            return em.createQuery("SELECT t FROM Task t ORDER BY t.id", Task.class).getResultList();
-        }finally {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT DISTINCT t FROM Task t LEFT JOIN FETCH t.tags ORDER BY t.id", Task.class).getResultList();
+        } finally {
             em.close();
         }
     }
 
-
     public Task findById(Long id){
-        EntityManager em =emf.createEntityManager();
-        try{
-            return em.find(Task.class, id);
-        }finally {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT t FROM Task t LEFT JOIN FETCH t.tags WHERE t.id = :id", Task.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+        } finally {
             em.close();
         }
     }
@@ -60,7 +58,7 @@ public class TaskRepository {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
         try{
-            transaction =em.getTransaction();
+            transaction = em.getTransaction();
             transaction.begin();
             Task task = em.find(Task.class, id);
             if(task != null){
@@ -77,22 +75,27 @@ public class TaskRepository {
         }
     }
 
-
     public void update(Task task){
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
-        try{
+        try {
             transaction = em.getTransaction();
             transaction.begin();
-            em.merge(task);
+            Task managedTask = em.find(Task.class, task.getId());
+            managedTask.setTitle(task.getTitle());
+            managedTask.setDescription(task.getDescription());
+            managedTask.setStatus(task.getStatus());
+            managedTask.setStartDate(task.getStartDate());
+            managedTask.setDueDate(task.getDueDate());
+            managedTask.setAssignee(task.getAssignee());
+            managedTask.setTags(task.getTags());
             transaction.commit();
-        }catch (Exception e){
-            if (transaction != null && transaction.isActive()){
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             e.printStackTrace();
-
-        }finally {
+        } finally {
             em.close();
         }
     }

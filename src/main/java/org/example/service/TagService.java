@@ -1,28 +1,32 @@
 package org.example.service;
 
 import org.example.domaine.Tag;
-import org.example.repository.Tagrepository;
+import org.example.repository.TagRepository;
 
 import java.util.List;
 
 public class TagService {
 
-    private Tagrepository tagrepository;
+    private TagRepository tagRepository;
 
     public TagService (){
-        this.tagrepository = new Tagrepository();
+        this.tagRepository = new TagRepository();
     }
 
     public void saveTag(Tag tag){
-        tagrepository.save(tag);
+        tagRepository.save(tag);
     }
 
     public List<Tag> getAlltags(){
-        return tagrepository.getAll();
+        return tagRepository.getAll();
     }
 
     public void deletetag(Long id){
-        tagrepository.delete(id);
+        tagRepository.delete(id);
+    }
+
+    public Tag findTagById(Long id) {
+        return tagRepository.findById(id);
     }
 
 

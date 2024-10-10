@@ -8,10 +8,10 @@ import org.example.domaine.Tag;
 
 import java.util.List;
 
-public class Tagrepository {
+public class TagRepository {
 
     private EntityManagerFactory emf;
-    public Tagrepository (){
+    public TagRepository(){
         this.emf = Persistence.createEntityManagerFactory("myJPAUnit");
     }
 
@@ -60,6 +60,15 @@ public class Tagrepository {
             }
             e.printStackTrace();
         }finally {
+            em.close();
+        }
+    }
+
+    public Tag findById(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Tag.class, id);
+        } finally {
             em.close();
         }
     }

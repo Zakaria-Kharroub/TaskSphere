@@ -35,13 +35,26 @@ public class TaskServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        User userAuthentifie = (User) request.getSession().getAttribute("user");
+
+        if (userAuthentifie == null){
+            response.sendRedirect("login");
+            return;
+        }
+
+        List<Task> allTasks = taskService.getAllTasks();
+        List<Task> userTasks = allTasks.stream()
+                .filter(task -> task.getCreator().getId().equals(userAuthentifie.getId()) ||
+                        task.getAssignee().getId().equals(userAuthentifie.getId()))
+                .collect(Collectors.toList());
+
         List<User> users = userService.getAllUsers();
         List<Tag> tags = tagService.getAlltags();
-        request.setAttribute("users", users);
-        request.setAttribute("tags", tags);
-        List<Task> tasks = taskService.getAllTasks();
-        request.setAttribute("tasks", tasks);
+        request.setAttribute("users",users);
+        request.setAttribute("tags",tags);
 
+        request.setAttribute("tasks",userTasks);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/tasks.jsp");
         dispatcher.forward(request, response);
     }

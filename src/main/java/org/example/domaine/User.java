@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -21,4 +23,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
+
+    @OneToMany(mappedBy = "creator" ,cascade = CascadeType.ALL)
+    private List<Task> createdTasks;
+
+    @OneToMany(mappedBy = "assignee" ,cascade = CascadeType.ALL)
+    private List<Task> assignedTasks;
 }

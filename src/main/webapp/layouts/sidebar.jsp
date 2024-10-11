@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="/testmaven02/tasks">
                     <i class="fas fa-tasks"></i>
                     Tasks
                 </a>

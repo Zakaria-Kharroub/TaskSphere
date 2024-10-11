@@ -8,10 +8,10 @@ import org.example.domaine.Tag;
 
 import java.util.List;
 
-public class Tagrepository {
+public class TagRepository {
 
     private EntityManagerFactory emf;
-    public Tagrepository (){
+    public TagRepository(){
         this.emf = Persistence.createEntityManagerFactory("myJPAUnit");
     }
 
@@ -23,7 +23,7 @@ public class Tagrepository {
             transaction = em.getTransaction();
             transaction.begin();
             em.persist(tag);
-            transaction.commit();;
+            transaction.commit();
         }catch (Exception e){
             if (transaction != null && transaction.isActive()){
                 transaction.rollback();
@@ -37,7 +37,7 @@ public class Tagrepository {
     public List<Tag> getAll(){
         EntityManager em = emf.createEntityManager();
         try{
-            return em.createQuery("SELECT t FROM Tag t ORDER BY t.id",Tag.class).getResultList();
+            return em.createQuery("SELECT DISTINCT t FROM Tag t LEFT JOIN FETCH t.tasks ORDER BY t.id", Tag.class).getResultList();
         }finally {
             em.close();
         }
@@ -56,10 +56,19 @@ public class Tagrepository {
             transaction.commit();
         }catch (Exception e){
             if (transaction != null && transaction.isActive()){
-                transaction.commit();
+                transaction.rollback();
             }
             e.printStackTrace();
         }finally {
+            em.close();
+        }
+    }
+
+    public Tag findById(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Tag.class, id);
+        } finally {
             em.close();
         }
     }

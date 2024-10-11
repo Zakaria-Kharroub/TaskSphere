@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import org.example.domaine.Task;
+import org.example.domaine.TaskStatus;
 
 import java.util.List;
 
@@ -97,6 +98,28 @@ public class TaskRepository {
             e.printStackTrace();
         } finally {
             em.close();
+        }
+    }
+
+    public void updateStatus(Long taskId, TaskStatus status) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = null;
+        try {
+            transaction = em.getTransaction();
+            transaction.begin();
+            Task task = em.find(Task.class, taskId);
+            if (task != null) {
+                task.setStatus(status);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+
         }
     }
 }

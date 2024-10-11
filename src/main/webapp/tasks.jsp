@@ -65,7 +65,13 @@
                                     <td>${task.id}</td>
                                     <td>${task.title}</td>
                                     <td>${task.description}</td>
-                                    <td>${task.status}</td>
+                                    <td>
+                                            ${task.status}
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#updateTaskStatusModal-${task.id}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </td>
+
                                     <td>${task.creationDate}</td>
                                     <td>${task.startDate}</td>
                                     <td>${task.dueDate}</td>
@@ -90,6 +96,38 @@
                                         </form>
                                     </td>
                                 </tr>
+
+
+
+                                <!-- modal update task stats -->
+                                <div class="modal fade" id="updateTaskStatusModal-${task.id}" tabindex="-1" aria-labelledby="updateTaskStatusModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="updateTaskStatusModalLabel">Update Task Status</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="tasks" method="post">
+                                                    <input type="hidden" name="id" value="${task.id}">
+                                                    <input type="hidden" name="action" value="updateStatus">
+                                                    <div class="mb-3">
+                                                        <label for="updateStatus-${task.id}" class="form-label">Status:</label>
+                                                        <select id="updateStatus-${task.id}" name="status" class="form-select" required>
+                                                            <option value="NOT_STARTED" ${task.status == 'NOT_STARTED' ? 'selected' : ''}>NOT STARTED</option>
+                                                            <option value="IN_PROGRESS" ${task.status == 'IN_PROGRESS' ? 'selected' : ''}>IN PROGRESS</option>
+                                                            <option value="DONE" ${task.status == 'DONE' ? 'selected' : ''}>DONE</option>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary w-100">Update Status</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </c:forEach>
                             </tbody>
                         </table>
@@ -146,30 +184,35 @@
                 </div>
             </div>
 
-            <!-- modal update user -->
-            <div class="modal fade" id="updateTaskModal" tabindex="-1" aria-labelledby="updateTaskModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="updateUserModalLabel">Update task</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="tasks" method="post">
-                                <input type="hidden" id="updateId" name="id">
-                                <input type="hidden" name="action" value="update">
 
-                                <div class="mb-3">
-                                    <label for="updateName" class="form-label">Name:</label>
-                                    <input type="text" id="updateName" name="name" class="form-control" required>
-                                </div>
 
-                                <button type="submit" class="btn btn-primary w-100">Update task</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
+
+<%--            <!-- modal update user -->--%>
+<%--            <div class="modal fade" id="updateTaskModal" tabindex="-1" aria-labelledby="updateTaskModalLabel" aria-hidden="true">--%>
+<%--                <div class="modal-dialog">--%>
+<%--                    <div class="modal-content">--%>
+<%--                        <div class="modal-header">--%>
+<%--                            <h5 class="modal-title" id="updateUserModalLabel">Update task</h5>--%>
+<%--                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
+<%--                        </div>--%>
+<%--                        <div class="modal-body">--%>
+<%--                            <form action="tasks" method="post">--%>
+<%--                                <input type="hidden" id="updateId" name="id">--%>
+<%--                                <input type="hidden" name="action" value="update">--%>
+
+<%--                                <div class="mb-3">--%>
+<%--                                    <label for="updateName" class="form-label">Name:</label>--%>
+<%--                                    <input type="text" id="updateName" name="name" class="form-control" required>--%>
+<%--                                </div>--%>
+
+<%--                                <button type="submit" class="btn btn-primary w-100">Update task</button>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </main>
     </div>
 </div>

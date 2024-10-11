@@ -61,7 +61,12 @@ public class TaskServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        save(request, response);
+        String action = request.getParameter("action");
+        if ("updateStatus".equals(action)) {
+            updateStatus(request, response);
+        } else {
+            save(request, response);
+        }
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -105,6 +110,14 @@ public class TaskServlet extends HttpServlet {
         task.setStatus(TaskStatus.NOT_STARTED);
 
         taskService.saveTask(task);
+        response.sendRedirect("tasks");
+    }
+
+
+    private void updateStatus(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Long taskId = Long.parseLong(request.getParameter("id"));
+        TaskStatus status = TaskStatus.valueOf(request.getParameter("status"));
+        taskService.updateTaskStatus(taskId, status);
         response.sendRedirect("tasks");
     }
 }

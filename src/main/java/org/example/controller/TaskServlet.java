@@ -4,6 +4,7 @@ import org.example.domaine.Task;
 import org.example.domaine.Tag;
 import org.example.domaine.TaskStatus;
 import org.example.domaine.User;
+import org.example.scheduler.TaskScheduler;
 import org.example.service.TaskService;
 import org.example.service.UserService;
 import org.example.service.TagService;
@@ -26,11 +27,14 @@ public class TaskServlet extends HttpServlet {
     private TaskService taskService;
     private UserService userService;
     private TagService tagService;
+    private TaskScheduler taskScheduler;
 
     public void init() throws ServletException {
         taskService = new TaskService();
         userService = new UserService();
         tagService = new TagService();
+        taskScheduler = new TaskScheduler();
+
     }
 
     @Override
@@ -57,11 +61,20 @@ public class TaskServlet extends HttpServlet {
         request.setAttribute("tasks",userTasks);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/tasks.jsp");
         dispatcher.forward(request, response);
+
+        taskScheduler.startScheduler();
+
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        save(request, response);
+        String action = request.getParameter("action");
+        if ("updateStatus".equals(action)) {
+            updateStatus(request, response);
+        } else {
+            save(request, response);
+        }
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -105,6 +118,14 @@ public class TaskServlet extends HttpServlet {
         task.setStatus(TaskStatus.NOT_STARTED);
 
         taskService.saveTask(task);
+        response.sendRedirect("tasks");
+    }
+
+
+    private void updateStatus(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Long taskId = Long.parseLong(request.getParameter("id"));
+        TaskStatus status = TaskStatus.valueOf(request.getParameter("status"));
+        taskService.updateTaskStatus(taskId, status);
         response.sendRedirect("tasks");
     }
 }

@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.domaine.Task;
+import org.example.domaine.TaskStatus;
 import org.example.repository.TaskRepository;
 
 import java.util.List;
@@ -32,4 +33,11 @@ public class TaskService {
     public void updateTask(Task task) {
         taskRepository.update(task);
     }
+
+    public void updateTaskStatus(Long taskId, TaskStatus status) {
+        taskRepository.updateStatus(taskId, status);
+    }
+
+
+
 }

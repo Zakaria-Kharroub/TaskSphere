@@ -4,6 +4,7 @@ import org.example.domaine.Task;
 import org.example.domaine.Tag;
 import org.example.domaine.TaskStatus;
 import org.example.domaine.User;
+import org.example.scheduler.TaskScheduler;
 import org.example.service.TaskService;
 import org.example.service.UserService;
 import org.example.service.TagService;
@@ -26,11 +27,14 @@ public class TaskServlet extends HttpServlet {
     private TaskService taskService;
     private UserService userService;
     private TagService tagService;
+    private TaskScheduler taskScheduler;
 
     public void init() throws ServletException {
         taskService = new TaskService();
         userService = new UserService();
         tagService = new TagService();
+        taskScheduler = new TaskScheduler();
+
     }
 
     @Override
@@ -57,6 +61,10 @@ public class TaskServlet extends HttpServlet {
         request.setAttribute("tasks",userTasks);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/tasks.jsp");
         dispatcher.forward(request, response);
+
+        taskScheduler.startScheduler();
+
+
     }
 
     @Override

@@ -31,15 +31,14 @@
                         </div>
                     </div>
                 </div>
-                <!-- Add more summary cards here -->
             </div>
+
+            <c:if test="${authUser.role=='USER'}">
+
 
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">Task management</h4>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
-                        <i class="fas fa-plus me-2"></i>add task
-                    </button>
+                    <h4 class="mb-0">task assignee</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -60,63 +59,60 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="task" items="${tasks}">
+                            <c:forEach var="taskAssignee" items="${tasksAssignee}">
                                 <tr>
-                                    <td>${task.id}</td>
-                                    <td>${task.title}</td>
-                                    <td>${task.description}</td>
+                                    <td>${taskAssignee.id}</td>
+                                    <td>${taskAssignee.title}</td>
+                                    <td>${taskAssignee.description}</td>
                                     <td>
-                                            ${task.status}
-                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#updateTaskStatusModal-${task.id}">
+                                            ${taskAssignee.status}
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#updateTaskAssigneeStatusModal-${taskAssignee.id}">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </td>
 
-                                    <td>${task.creationDate}</td>
-                                    <td>${task.startDate}</td>
-                                    <td>${task.dueDate}</td>
-                                    <td>${task.creator.name}</td>
-                                    <td>${task.assignee.name}</td>
+                                    <td>${taskAssignee.creationDate}</td>
+                                    <td>${taskAssignee.startDate}</td>
+                                    <td>${taskAssignee.dueDate}</td>
+                                    <td>${taskAssignee.creator.name}</td>
+                                    <td>${taskAssignee.assignee.name}</td>
                                     <td>
-                                        <c:forEach var="tag" items="${task.tags}" varStatus="loop">
+                                        <c:forEach var="tag" items="${taskAssignee.tags}" varStatus="loop">
                                             <span class="badge bg-primary">${tag.name}</span>
                                             <c:if test="${!loop.last}">&nbsp;</c:if>
                                         </c:forEach>
                                     </td>
                                     <td>
-                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#updateTaskModal">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-
+                                      <c:if test="${authUser.tokenDelete >= 1 || authUser.role=='MANAGER'}">
                                         <form action="tasks" method="post" style="display:inline;">
-                                            <input type="hidden" name="id" value="${task.id}">
+                                            <input type="hidden" name="id" value="${taskAssignee.id}">
                                             <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
-                                    </td>
+                                      </c:if>
+
                                 </tr>
 
 
-
                                 <!-- modal update task stats -->
-                                <div class="modal fade" id="updateTaskStatusModal-${task.id}" tabindex="-1" aria-labelledby="updateTaskStatusModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="updateTaskAssigneeStatusModal-${taskAssignee.id}" tabindex="-1" aria-labelledby="updateTaskStatusModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="updateTaskStatusModalLabel">Update Task Status</h5>
+                                                <h5 class="modal-title">Update Task Status</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form action="tasks" method="post">
-                                                    <input type="hidden" name="id" value="${task.id}">
+                                                    <input type="hidden" name="id" value="${taskAssignee.id}">
                                                     <input type="hidden" name="action" value="updateStatus">
                                                     <div class="mb-3">
-                                                        <label for="updateStatus-${task.id}" class="form-label">Status:</label>
-                                                        <select id="updateStatus-${task.id}" name="status" class="form-select" required>
-                                                            <option value="NOT_STARTED" ${task.status == 'NOT_STARTED' ? 'selected' : ''}>NOT STARTED</option>
-                                                            <option value="IN_PROGRESS" ${task.status == 'IN_PROGRESS' ? 'selected' : ''}>IN PROGRESS</option>
-                                                            <option value="DONE" ${task.status == 'DONE' ? 'selected' : ''}>DONE</option>
+                                                        <label for="updateStatus-${taskAssignee.id}" class="form-label">Status:</label>
+                                                        <select id="updateStatus-${taskAssignee.id}" name="status" class="form-select" required>
+                                                            <option value="NOT_STARTED" ${taskAssignee.status == 'NOT_STARTED' ? 'selected' : ''}>NOT STARTED</option>
+                                                            <option value="IN_PROGRESS" ${taskAssignee.status == 'IN_PROGRESS' ? 'selected' : ''}>IN PROGRESS</option>
+                                                            <option value="DONE" ${taskAssignee.status == 'DONE' ? 'selected' : ''}>DONE</option>
                                                         </select>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary w-100">Update Status</button>
@@ -126,7 +122,106 @@
                                     </div>
                                 </div>
 
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </c:if>
 
+
+
+
+        <%-------------------task created --------------------%>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">task Created</h4>
+
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                        <i class="fas fa-plus me-2"></i>add task
+                    </button>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>title</th>
+                                <th>description</th>
+                                <th>status</th>
+                                <th>creation date</th>
+                                <th> start date</th>
+                                <th>due date</th>
+                                <th> created by</th>
+                                <th>assignee</th>
+                                <th>tags</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="taskCreator" items="${tasksCreator}">
+                                <tr>
+                                    <td>${taskCreator.id}</td>
+                                    <td>${taskCreator.title}</td>
+                                    <td>${taskCreator.description}</td>
+                                    <td>
+                                            ${taskCreator.status}
+                                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#updateTaskCreatorStatusModal-${taskCreator.id}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </td>
+
+                                    <td>${taskCreator.creationDate}</td>
+                                    <td>${taskCreator.startDate}</td>
+                                    <td>${taskCreator.dueDate}</td>
+                                    <td>${taskCreator.creator.name}</td>
+                                    <td>${taskCreator.assignee.name}</td>
+                                    <td>
+                                        <c:forEach var="tag" items="${taskCreator.tags}" varStatus="loop">
+                                            <span class="badge bg-primary">${tag.name}</span>
+                                            <c:if test="${!loop.last}">&nbsp;</c:if>
+                                        </c:forEach>
+                                    </td>
+                                    <td>
+
+                                            <form action="tasks" method="post" style="display:inline;">
+                                                <input type="hidden" name="id" value="${taskCreator.id}">
+                                                <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                    </td>
+                                </tr>
+
+                                <!-- modal update task stats -->
+                                <div class="modal fade" id="updateTaskCreatorStatusModal-${taskCreator.id}" tabindex="-1" aria-labelledby="updateTaskStatusModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="updateTaskStatusModalLabel">Update Task Status</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="tasks" method="post">
+                                                    <input type="hidden" name="id" value="${taskCreator.id}">
+                                                    <input type="hidden" name="action" value="updateStatus">
+                                                    <div class="mb-3">
+                                                        <label for="updateStatus-${taskCreator.id}" class="form-label">Status:</label>
+                                                        <select id="updateStatus-${taskCreator.id}" name="status" class="form-select" required>
+                                                            <option value="NOT_STARTED" ${taskCreator.status == 'NOT_STARTED' ? 'selected' : ''}>NOT STARTED</option>
+                                                            <option value="IN_PROGRESS" ${taskCreator.status == 'IN_PROGRESS' ? 'selected' : ''}>IN PROGRESS</option>
+                                                            <option value="DONE" ${taskCreator.status == 'DONE' ? 'selected' : ''}>DONE</option>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary w-100">Update Status</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </c:forEach>
                             </tbody>
@@ -137,6 +232,7 @@
 
             <!-- Add Task Modal -->
             <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -155,18 +251,27 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="startDate" class="form-label">Creation Date:</label>
-                                    <input type="date" id="startDate" name="startDate" class="form-control" required min="<%= java.time.LocalDate.now() %>">
+                                    <input type="date" id="startDate" name="startDate" class="form-control" required min="<%= java.time.LocalDate.now().plusDays(3) %>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="dueDate" class="form-label">Due Date:</label>
-                                    <input type="date" id="dueDate" name="dueDate" class="form-control" required min="<%= java.time.LocalDate.now() %>">
+                                    <input type="date" id="dueDate" name="dueDate" class="form-control" required min="<%= java.time.LocalDate.now().plusDays(3) %>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="assignee" class="form-label">Assignee:</label>
                                     <select id="assignee" name="assignee" class="form-select" required>
+
+                                        <c:if test="${authUser.role=='MANAGER'}">
                                         <c:forEach var="user" items="${users}">
                                             <option value="${user.id}">${user.name}</option>
                                         </c:forEach>
+                                        </c:if>
+
+
+                                        <c:if test="${authUser.role=='USER' }">
+                                            <option value="${authUser.id}">${authUser.name}</option>
+                                        </c:if>
+
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -185,34 +290,11 @@
             </div>
 
 
+<%--            <c:forEach var="user" items="${users}">--%>
+<%--                <li>${user.name} : ${user.role}</li>--%>
+<%--            </c:forEach>--%>
 
 
-
-
-<%--            <!-- modal update user -->--%>
-<%--            <div class="modal fade" id="updateTaskModal" tabindex="-1" aria-labelledby="updateTaskModalLabel" aria-hidden="true">--%>
-<%--                <div class="modal-dialog">--%>
-<%--                    <div class="modal-content">--%>
-<%--                        <div class="modal-header">--%>
-<%--                            <h5 class="modal-title" id="updateUserModalLabel">Update task</h5>--%>
-<%--                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-<%--                        </div>--%>
-<%--                        <div class="modal-body">--%>
-<%--                            <form action="tasks" method="post">--%>
-<%--                                <input type="hidden" id="updateId" name="id">--%>
-<%--                                <input type="hidden" name="action" value="update">--%>
-
-<%--                                <div class="mb-3">--%>
-<%--                                    <label for="updateName" class="form-label">Name:</label>--%>
-<%--                                    <input type="text" id="updateName" name="name" class="form-control" required>--%>
-<%--                                </div>--%>
-
-<%--                                <button type="submit" class="btn btn-primary w-100">Update task</button>--%>
-<%--                            </form>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
         </main>
     </div>
 </div>

@@ -29,4 +29,9 @@ public class User {
 
     @OneToMany(mappedBy = "assignee" ,cascade = CascadeType.ALL)
     private List<Task> assignedTasks;
+
+    private int tokenDelete;
+    private int tokenResingne;
+
+
 }

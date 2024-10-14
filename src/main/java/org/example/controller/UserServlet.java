@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.domaine.Role;
 import org.example.domaine.User;
+import org.example.scheduler.TokenScheduler;
 import org.example.service.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -19,9 +20,11 @@ import org.mindrot.jbcrypt.BCrypt;
 public class UserServlet extends HttpServlet {
 
     private UserService userService;
+    private TokenScheduler tokenScheduler;
 
     public void init() throws ServletException {
         userService = new UserService();
+        tokenScheduler = new TokenScheduler();
     }
 
     @Override
@@ -30,6 +33,7 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("users", users);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/test.jsp");
         requestDispatcher.forward(request, response);
+        tokenScheduler.startScheduler();
     }
 
     @Override
@@ -63,6 +67,8 @@ public class UserServlet extends HttpServlet {
         user.setEmail(email);
         user.setPassword(hashedPassword);
         user.setRole(role);
+        user.setTokenDelete(1);
+        user.setTokenResingne(2);
 
         userService.saveUser(user);
         resp.sendRedirect("users");

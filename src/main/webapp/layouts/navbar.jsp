@@ -10,12 +10,14 @@
                 </li>
             </ul>
 
+
             <div class="d-flex align-items-center">
 
                 <%
                     User user = (User) session.getAttribute("user");
                     if (user != null) {
                 %>
+                <%= user.getTokenDelete()%> <%= user.getTokenResingne()%>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <%= user.getName() %>

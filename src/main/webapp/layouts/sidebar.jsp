@@ -1,7 +1,14 @@
+<%@ page import="org.example.domaine.User" %>
 <!-- Sidebar -->
 <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
     <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
+<%--            <li class="nav-item">--%>
+<%--                    <i style="font-size: 2rem; color: #ffffff;margin-left:2rem">--%>
+<%--                        Zakaria--%>
+<%--                    </i>--%>
+<%--            </li>--%>
+
             <li class="nav-item">
                 <a class="nav-link" href="/testmaven02">
                     <i class="fas fa-home"></i>

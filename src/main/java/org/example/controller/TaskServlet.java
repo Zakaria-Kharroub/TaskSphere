@@ -1,9 +1,6 @@
 package org.example.controller;
 
-import org.example.domaine.Task;
-import org.example.domaine.Tag;
-import org.example.domaine.TaskStatus;
-import org.example.domaine.User;
+import org.example.domaine.*;
 import org.example.scheduler.TaskScheduler;
 import org.example.service.TaskService;
 import org.example.service.UserService;
@@ -48,17 +45,31 @@ public class TaskServlet extends HttpServlet {
         }
 
         List<Task> allTasks = taskService.getAllTasks();
-        List<Task> userTasks = allTasks.stream()
-                .filter(task -> task.getCreator().getId().equals(userAuthentifie.getId()) ||
-                        task.getAssignee().getId().equals(userAuthentifie.getId()))
+
+
+        List<Task> tasksCreator = allTasks.stream()
+                .filter(task -> task.getCreator().getId().equals(userAuthentifie.getId()))
                 .collect(Collectors.toList());
 
+        List<Task> tasksAssignee = allTasks.stream()
+                .filter(task -> task.getAssignee().getId().equals(userAuthentifie.getId()) && !task.getCreator().getId().equals(userAuthentifie.getId()))
+                .collect(Collectors.toList());
+
+
+
+
+
         List<User> users = userService.getAllUsers();
+
+        List<User> filtredUser =users.stream().filter(user -> user.getRole().equals(Role.USER)).collect(Collectors.toList());
+
         List<Tag> tags = tagService.getAlltags();
-        request.setAttribute("users",users);
+        request.setAttribute("authUser",userAuthentifie);
+        request.setAttribute("users",filtredUser);
         request.setAttribute("tags",tags);
 
-        request.setAttribute("tasks",userTasks);
+        request.setAttribute("tasksCreator",tasksCreator);
+            request.setAttribute("tasksAssignee",tasksAssignee);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/tasks.jsp");
         dispatcher.forward(request, response);
 
@@ -72,6 +83,9 @@ public class TaskServlet extends HttpServlet {
         String action = request.getParameter("action");
         if ("updateStatus".equals(action)) {
             updateStatus(request, response);
+
+        } else if ("delete".equals(action)){
+            deleteTask(request,response);
         } else {
             save(request, response);
         }
@@ -127,5 +141,17 @@ public class TaskServlet extends HttpServlet {
         TaskStatus status = TaskStatus.valueOf(request.getParameter("status"));
         taskService.updateTaskStatus(taskId, status);
         response.sendRedirect("tasks");
+    }
+
+    private void deleteTask(HttpServletRequest req,HttpServletResponse resp) throws IOException{
+        Long id = Long.parseLong(req.getParameter("id"));
+        taskService.deleteTask(id);
+        User authUser = (User) req.getSession().getAttribute("user");
+        if(authUser != null){
+            authUser.setTokenDelete(0);
+            userService.updateUser(authUser);
+            req.getSession().setAttribute("user",authUser);
+        }
+        resp.sendRedirect("tasks");
     }
 }

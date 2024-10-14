@@ -83,6 +83,9 @@ public class TaskServlet extends HttpServlet {
         String action = request.getParameter("action");
         if ("updateStatus".equals(action)) {
             updateStatus(request, response);
+
+        } else if ("delete".equals(action)){
+            deleteTask(request,response);
         } else {
             save(request, response);
         }
@@ -138,5 +141,17 @@ public class TaskServlet extends HttpServlet {
         TaskStatus status = TaskStatus.valueOf(request.getParameter("status"));
         taskService.updateTaskStatus(taskId, status);
         response.sendRedirect("tasks");
+    }
+
+    private void deleteTask(HttpServletRequest req,HttpServletResponse resp) throws IOException{
+        Long id = Long.parseLong(req.getParameter("id"));
+        taskService.deleteTask(id);
+        User authUser = (User) req.getSession().getAttribute("user");
+        if(authUser != null){
+            authUser.setTokenDelete(0);
+            userService.updateUser(authUser);
+            req.getSession().setAttribute("user",authUser);
+        }
+        resp.sendRedirect("tasks");
     }
 }

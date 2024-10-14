@@ -33,16 +33,12 @@
                 </div>
             </div>
 
+            <c:if test="${authUser.role=='USER'}">
+
+
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">task assignee</h4>
-                    <c:if test="${authUser.role=='MANAGER'}">
-
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
-                            <i class="fas fa-plus me-2"></i>add task
-                        </button>
-                    </c:if>
-
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -87,20 +83,16 @@
                                         </c:forEach>
                                     </td>
                                     <td>
-<%--                                        <%--%>
-<%--                                            User user = (User) session.getAttribute("user");--%>
-
-<%--                                            if (user.getTokenDelete() < 1 && task.getCreator().getId() != user.getId()) {--%>
-<%--                                        %>--%>
+                                      <c:if test="${authUser.tokenDelete >= 1 || authUser.role=='MANAGER'}">
                                         <form action="tasks" method="post" style="display:inline;">
                                             <input type="hidden" name="id" value="${taskAssignee.id}">
                                             <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
+                                      </c:if>
 
                                 </tr>
-
 
 
                                 <!-- modal update task stats -->
@@ -136,14 +128,12 @@
                     </div>
                 </div>
             </div>
+            </c:if>
 
 
 
 
-
-
-
-<%-------------------task created --------------------%>
+        <%-------------------task created --------------------%>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">task Created</h4>
@@ -196,21 +186,15 @@
                                         </c:forEach>
                                     </td>
                                     <td>
-                                            <%--                                        <%--%>
-                                            <%--                                            User user = (User) session.getAttribute("user");--%>
 
-                                            <%--                                            if (user.getTokenDelete() < 1 && task.getCreator().getId() != user.getId()) {--%>
-                                            <%--                                        %>--%>
-                                        <form action="tasks" method="post" style="display:inline;">
-                                            <input type="hidden" name="id" value="${taskCreator.id}">
-                                            <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-
+                                            <form action="tasks" method="post" style="display:inline;">
+                                                <input type="hidden" name="id" value="${taskCreator.id}">
+                                                <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                    </td>
                                 </tr>
-
-
 
                                 <!-- modal update task stats -->
                                 <div class="modal fade" id="updateTaskCreatorStatusModal-${taskCreator.id}" tabindex="-1" aria-labelledby="updateTaskStatusModalLabel" aria-hidden="true">
@@ -248,6 +232,7 @@
 
             <!-- Add Task Modal -->
             <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -266,11 +251,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="startDate" class="form-label">Creation Date:</label>
-                                    <input type="date" id="startDate" name="startDate" class="form-control" required min="<%= java.time.LocalDate.now() %>">
+                                    <input type="date" id="startDate" name="startDate" class="form-control" required min="<%= java.time.LocalDate.now().plusDays(3) %>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="dueDate" class="form-label">Due Date:</label>
-                                    <input type="date" id="dueDate" name="dueDate" class="form-control" required min="<%= java.time.LocalDate.now() %>">
+                                    <input type="date" id="dueDate" name="dueDate" class="form-control" required min="<%= java.time.LocalDate.now().plusDays(3) %>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="assignee" class="form-label">Assignee:</label>

@@ -90,6 +90,8 @@ public class TaskRepository {
             managedTask.setDueDate(task.getDueDate());
             managedTask.setAssignee(task.getAssignee());
             managedTask.setTags(task.getTags());
+            managedTask.setTokenUsed(task.isTokenUsed());
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {

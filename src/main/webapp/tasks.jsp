@@ -54,6 +54,7 @@
                                 <th>due date</th>
                                 <th> created by</th>
                                 <th>assignee</th>
+                                <th>token used</th>
                                 <th>tags</th>
                                 <th>Actions</th>
                             </tr>
@@ -70,12 +71,12 @@
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </td>
-
                                     <td>${taskAssignee.creationDate}</td>
                                     <td>${taskAssignee.startDate}</td>
                                     <td>${taskAssignee.dueDate}</td>
                                     <td>${taskAssignee.creator.name}</td>
                                     <td>${taskAssignee.assignee.name}</td>
+                                    <td>${taskAssignee.tokenUsed}</td>
                                     <td>
                                         <c:forEach var="tag" items="${taskAssignee.tags}" varStatus="loop">
                                             <span class="badge bg-primary">${tag.name}</span>
@@ -83,15 +84,24 @@
                                         </c:forEach>
                                     </td>
                                     <td>
-                                      <c:if test="${authUser.tokenDelete >= 1 || authUser.role=='MANAGER'}">
-                                        <form action="tasks" method="post" style="display:inline;">
-                                            <input type="hidden" name="id" value="${taskAssignee.id}">
-                                            <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                      </c:if>
+                                        <c:if test="${taskAssignee.tokenUsed == false }">
+                                            <form action="requests" method="post" style="display:inline;">
+                                                <input type="hidden" name="id" value="${taskAssignee.id}">
+                                                <button type="submit" name="action" value="request" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-handshake"></i>
+                                                </button>
+                                            </form>
+                                        </c:if>
 
+                                        <c:if test="${authUser.tokenDelete >= 1 || authUser.role=='MANAGER'}">
+                                            <form action="tasks" method="post" style="display:inline;">
+                                                <input type="hidden" name="id" value="${taskAssignee.id}">
+                                                <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </c:if>
+                                    </td>
                                 </tr>
 
 
@@ -157,6 +167,7 @@
                                 <th>due date</th>
                                 <th> created by</th>
                                 <th>assignee</th>
+                                <th>token used</th>
                                 <th>tags</th>
                                 <th>Actions</th>
                             </tr>
@@ -179,6 +190,14 @@
                                     <td>${taskCreator.dueDate}</td>
                                     <td>${taskCreator.creator.name}</td>
                                     <td>${taskCreator.assignee.name}</td>
+                                    <td>
+                                        <c:if test="${taskCreator.tokenUsed}">
+                                            oui
+                                        </c:if>
+                                        <c:if test="${!taskCreator.tokenUsed}">
+                                            non
+                                        </c:if>
+                                    </td>
                                     <td>
                                         <c:forEach var="tag" items="${taskCreator.tags}" varStatus="loop">
                                             <span class="badge bg-primary">${tag.name}</span>

@@ -33,5 +33,8 @@ public class User {
     private int tokenDelete;
     private int tokenResingne;
 
+    @OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL)
+    private List<Request> requests;
+
 
 }

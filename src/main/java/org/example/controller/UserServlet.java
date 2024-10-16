@@ -33,7 +33,7 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("users", users);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/test.jsp");
         requestDispatcher.forward(request, response);
-//        tokenScheduler.startScheduler();
+        tokenScheduler.startScheduler();
     }
 
     @Override

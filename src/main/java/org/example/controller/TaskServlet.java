@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.domaine.*;
+import org.example.scheduler.RequestScheduler;
 import org.example.scheduler.TaskScheduler;
 import org.example.service.TaskService;
 import org.example.service.UserService;
@@ -25,12 +26,15 @@ public class TaskServlet extends HttpServlet {
     private UserService userService;
     private TagService tagService;
     private TaskScheduler taskScheduler;
+    private RequestScheduler requestScheduler;
 
     public void init() throws ServletException {
         taskService = new TaskService();
         userService = new UserService();
         tagService = new TagService();
         taskScheduler = new TaskScheduler();
+        requestScheduler = new RequestScheduler();
+
 
     }
 
@@ -75,7 +79,9 @@ public class TaskServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/tasks.jsp");
         dispatcher.forward(request, response);
 
-//        taskScheduler.startScheduler();
+        taskScheduler.startScheduler();
+        requestScheduler.startSchedular();
+
 
 
 

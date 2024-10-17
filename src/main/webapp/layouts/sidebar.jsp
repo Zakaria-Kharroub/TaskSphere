@@ -42,6 +42,14 @@
     </li>
 
 
+    <li class="nav-item">
+        <a class="nav-link" href="/testmaven02/statistiques">
+             <i class="fas fa-chart-line"></i>
+            Statistiques
+        </a>
+    </li>
+
+
 
             <li class="nav-item mt-5">
                 <a class="nav-link" href="/testmaven02/logout">
@@ -49,6 +57,8 @@
                     Logout
                 </a>
             </li>
+
+
 
 
 

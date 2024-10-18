@@ -24,6 +24,13 @@ public class User {
     @Column(name = "role")
     private Role role;
 
+    public User(String name, String email, String password, Role role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     @OneToMany(mappedBy = "creator" ,cascade = CascadeType.ALL)
     private List<Task> createdTasks;
 

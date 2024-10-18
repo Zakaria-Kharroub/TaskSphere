@@ -1,6 +1,8 @@
 package org.example.service;
 
 import org.example.domaine.User;
+import org.example.errors.EmailExistException;
+import org.example.errors.UserIsEmptyException;
 import org.example.errors.UserIsNullException;
 import org.example.repository.UserRepository;
 
@@ -19,28 +21,19 @@ public class UserService {
 //    }
 
 
+
+
     public void saveUser(User user) {
         if (user == null) {
             throw new UserIsNullException();
         }
-        if (user.getName() == null || user.getName().isEmpty()) {
-            throw new IllegalArgumentException("name obligatoire");
+        if (user.getName() == null || user.getName().trim().isEmpty()) {
+            throw new UserIsEmptyException();
         }
-        if (user.getEmail() == null || user.getEmail().isEmpty()) {
-            throw new IllegalArgumentException("email not null ou empty");
-        }
-        if (user.getPassword() == null || user.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("password not null ou empty");
-        }
-        if (user.getRole() == null) {
-            throw new IllegalArgumentException("role not null");
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new EmailExistException();
         }
 
-        // Check for existing email
-        User existingUser = userRepository.findByEmail(user.getEmail());
-        if (existingUser != null) {
-            throw new IllegalArgumentException("email already used");
-        }
 
         userRepository.save(user);
     }

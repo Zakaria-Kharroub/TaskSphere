@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e595af77-b82b-47d2-9d52-58518a851dc4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/TaskServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/TaskServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/TaskService.java" afterDir="false" />
-    </list>
+    <list default="true" id="e595af77-b82b-47d2-9d52-58518a851dc4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "refactor",
+    "git-widget-placeholder": "realease-1.2.0",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Youcode/IdeaProjects/testmaven02/src/main/webapp",
     "node.js.detected.package.eslint": "true",
@@ -224,7 +219,7 @@
       <workItem from="1729242159005" duration="4175000" />
       <workItem from="1729247689039" duration="505000" />
       <workItem from="1729248211281" duration="10586000" />
-      <workItem from="1729453987362" duration="8384000" />
+      <workItem from="1729453987362" duration="8698000" />
     </task>
     <servers />
   </component>

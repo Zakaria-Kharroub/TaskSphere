@@ -10,13 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e595af77-b82b-47d2-9d52-58518a851dc4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/errors/EmailExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/errors/EmailFormatInvalid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/errors/UserIsEmptyException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/domaine/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/domaine/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/errors/UserIsNullException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/errors/UserIsNullException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service/UserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "test",
+    "git-widget-placeholder": "refactor",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Youcode/IdeaProjects/testmaven02/src/main/webapp",
     "node.js.detected.package.eslint": "true",
@@ -73,7 +71,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.UserTest">
+  <component name="RunManager" selected="Smart Tomcat.TomcatTest">
     <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="testmaven02" />
       <extension name="coverage">
@@ -183,9 +181,6 @@
       <option name="catalinaBase" value="C:\Users\Youcode\.SmartTomcat\testmaven02\testmaven02" />
       <option name="contextPath" value="/testmaven02" />
       <option name="docBase" value="C:\Users\Youcode\IdeaProjects\testmaven02\src\main\webapp" />
-      <option name="envOptions">
-        <map />
-      </option>
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
@@ -229,7 +224,8 @@
       <workItem from="1729241416029" duration="721000" />
       <workItem from="1729242159005" duration="4175000" />
       <workItem from="1729247689039" duration="505000" />
-      <workItem from="1729248211281" duration="9454000" />
+      <workItem from="1729248211281" duration="10586000" />
+      <workItem from="1729453987362" duration="4752000" />
     </task>
     <servers />
   </component>

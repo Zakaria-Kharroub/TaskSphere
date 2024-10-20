@@ -23,7 +23,7 @@ public class UserService {
 
 
 
-    public void saveUser(User user) {
+    public User saveUser(User user) {
         if (user == null) {
             throw new UserIsNullException();
         }
@@ -34,8 +34,7 @@ public class UserService {
             throw new EmailExistException();
         }
 
-
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
 
@@ -43,12 +42,12 @@ public class UserService {
         return userRepository.getAll();
     }
 
-    public void deleteUser(Long id) {
-        userRepository.delete(id);
+    public boolean deleteUser(Long id) {
+        return userRepository.delete(id);
     }
 
-    public void updateUser(User user) {
-        userRepository.update(user);
+    public User updateUser(User user) {
+        return userRepository.update(user);
     }
 
     public User findUserById(Long id) {

@@ -16,7 +16,7 @@ public class UserRepository {
         this.emf = Persistence.createEntityManagerFactory("myJPAUnit");
     }
 
-    public void save(User user) {
+    public User save(User user) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
         try {
@@ -24,11 +24,13 @@ public class UserRepository {
             transaction.begin();
             em.persist(user);
             transaction.commit();
+            return user;
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             e.printStackTrace();
+            return null;
         } finally {
             em.close();
         }
@@ -43,7 +45,7 @@ public class UserRepository {
         }
     }
 
-    public void delete(Long id) {
+    public boolean delete(Long id) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
         try {
@@ -52,32 +54,38 @@ public class UserRepository {
             User user = em.find(User.class, id);
             if (user != null) {
                 em.remove(user);
+                transaction.commit();
+                return true;
+            } else {
+                transaction.rollback();
+                return false;
             }
-            transaction.commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             e.printStackTrace();
+            return false;
         } finally {
             em.close();
         }
     }
 
-    public void update(User user) {
+    public User update(User user) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
         try {
             transaction = em.getTransaction();
             transaction.begin();
-            em.merge(user);
+            User updatedUser = em.merge(user);
             transaction.commit();
-            System.out.println("user updated");
+            return updatedUser;
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             e.printStackTrace();
+            return null;
         } finally {
             em.close();
         }

@@ -70,9 +70,14 @@ public class UserServlet extends HttpServlet {
         user.setTokenDelete(1);
         user.setTokenResingne(2);
 
-        userService.saveUser(user);
-        resp.sendRedirect("users");
+        User savedUser = userService.saveUser(user);
+        if (savedUser != null) {
+            resp.sendRedirect("users");
+        } else {
+            resp.getWriter().write("Error saving user");
+        }
     }
+
 
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long id = Long.parseLong(req.getParameter("id"));

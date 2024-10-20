@@ -17,20 +17,22 @@ public class TaskRepository {
         this.emf = Persistence.createEntityManagerFactory("myJPAUnit");
     }
 
-    public void save(Task task){
+    public Task save(Task task) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
-        try{
+        try {
             transaction = em.getTransaction();
             transaction.begin();
             em.persist(task);
             transaction.commit();
-        }catch (Exception e){
-            if (transaction != null && transaction.isActive()){
+            return task;
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             e.printStackTrace();
-        }finally {
+            return null;
+        } finally {
             em.close();
         }
     }
@@ -55,28 +57,33 @@ public class TaskRepository {
         }
     }
 
-    public void delete(Long id){
+    public boolean delete(Long id) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
-        try{
+        try {
             transaction = em.getTransaction();
             transaction.begin();
             Task task = em.find(Task.class, id);
-            if(task != null){
+            if (task != null) {
                 em.remove(task);
+                transaction.commit();
+                return true;
+            } else {
+                transaction.rollback();
+                return false;
             }
-            transaction.commit();
-        }catch (Exception e){
-            if (transaction != null && transaction.isActive()){
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             e.printStackTrace();
-        }finally {
+            return false;
+        } finally {
             em.close();
         }
     }
 
-    public void update(Task task){
+    public Task update(Task task) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = null;
         try {
@@ -91,13 +98,14 @@ public class TaskRepository {
             managedTask.setAssignee(task.getAssignee());
             managedTask.setTags(task.getTags());
             managedTask.setTokenUsed(task.isTokenUsed());
-
             transaction.commit();
+            return managedTask;
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
             e.printStackTrace();
+            return null;
         } finally {
             em.close();
         }

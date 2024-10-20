@@ -14,8 +14,8 @@ public class TaskService {
         this.taskRepository = new TaskRepository();
     }
 
-    public void saveTask(Task task) {
-        taskRepository.save(task);
+    public Task saveTask(Task task) {
+        return taskRepository.save(task);
     }
 
     public List<Task> getAllTasks() {
@@ -26,18 +26,15 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public void deleteTask(Long id) {
-        taskRepository.delete(id);
+    public boolean deleteTask(Long id) {
+        return taskRepository.delete(id);
     }
-
-    public void updateTask(Task task) {
-        taskRepository.update(task);
+    public Task updateTask(Task task) {
+        return taskRepository.update(task);
     }
 
     public void updateTaskStatus(Long taskId, TaskStatus status) {
         taskRepository.updateStatus(taskId, status);
     }
-
-
 
 }

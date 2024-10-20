@@ -34,8 +34,6 @@ public class TaskServlet extends HttpServlet {
         tagService = new TagService();
         taskScheduler = new TaskScheduler();
         requestScheduler = new RequestScheduler();
-
-
     }
 
     @Override
@@ -50,7 +48,6 @@ public class TaskServlet extends HttpServlet {
 
         List<Task> allTasks = taskService.getAllTasks();
 
-
         List<Task> tasksCreator = allTasks.stream()
                 .filter(task -> task.getCreator().getId().equals(userAuthentifie.getId()))
                 .collect(Collectors.toList());
@@ -58,9 +55,6 @@ public class TaskServlet extends HttpServlet {
         List<Task> tasksAssignee = allTasks.stream()
                 .filter(task -> task.getAssignee().getId().equals(userAuthentifie.getId()) && !task.getCreator().getId().equals(userAuthentifie.getId()))
                 .collect(Collectors.toList());
-
-
-
 
 
         List<User> users = userService.getAllUsers();

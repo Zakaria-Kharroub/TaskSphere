@@ -24,12 +24,6 @@
 
 ---
 
-##  Features
-
-<code>❯ REPLACE-ME</code>
-
----
-
 ##  Repository Structure
 
 ```sh
@@ -70,7 +64,7 @@
 
 | File | Summary |
 | --- | --- |
-| [Main.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/Main.java) | <code>❯ REPLACE-ME</code> |
+| [Main.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/Main.java) | <code>❯ </code> |
 
 </details>
 
@@ -78,13 +72,13 @@
 
 | File | Summary |
 | --- | --- |
-| [TaskStatus.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/TaskStatus.java) | <code>❯ REPLACE-ME</code> |
-| [RequestStatus.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/RequestStatus.java) | <code>❯ REPLACE-ME</code> |
-| [User.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/User.java) | <code>❯ REPLACE-ME</code> |
-| [Request.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Request.java) | <code>❯ REPLACE-ME</code> |
-| [Tag.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Tag.java) | <code>❯ REPLACE-ME</code> |
-| [Task.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Task.java) | <code>❯ REPLACE-ME</code> |
-| [Role.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Role.java) | <code>❯ REPLACE-ME</code> |
+| [TaskStatus.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/TaskStatus.java) | <code>❯ </code> |
+| [RequestStatus.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/RequestStatus.java) | <code>❯ </code> |
+| [User.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/User.java) | <code>❯ </code> |
+| [Request.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Request.java) | <code>❯ </code> |
+| [Tag.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Tag.java) | <code>❯ </code> |
+| [Task.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Task.java) | <code>❯ </code> |
+| [Role.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Role.java) | <code>❯ </code> |
 
 </details>
 
@@ -92,9 +86,9 @@
 
 | File | Summary |
 | --- | --- |
-| [RequestScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/RequestScheduler.java) | <code>❯ REPLACE-ME</code> |
-| [TaskScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/TaskScheduler.java) | <code>❯ REPLACE-ME</code> |
-| [TokenScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/TokenScheduler.java) | <code>❯ REPLACE-ME</code> |
+| [RequestScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/RequestScheduler.java) | <code>❯ </code> |
+| [TaskScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/TaskScheduler.java) | <code>❯ </code> |
+| [TokenScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/TokenScheduler.java) | <code>❯ </code> |
 
 </details>
 
@@ -102,10 +96,10 @@
 
 | File | Summary |
 | --- | --- |
-| [EmailExistException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/EmailExistException.java) | <code>❯ REPLACE-ME</code> |
-| [UserIsEmptyException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/UserIsEmptyException.java) | <code>❯ REPLACE-ME</code> |
-| [EmailFormatInvalid.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/EmailFormatInvalid.java) | <code>❯ REPLACE-ME</code> |
-| [UserIsNullException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/UserIsNullException.java) | <code>❯ REPLACE-ME</code> |
+| [EmailExistException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/EmailExistException.java) | <code>❯ </code> |
+| [UserIsEmptyException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/UserIsEmptyException.java) | <code>❯ </code> |
+| [EmailFormatInvalid.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/EmailFormatInvalid.java) | <code>❯ </code> |
+| [UserIsNullException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/UserIsNullException.java) | <code>❯ </code> |
 
 </details>
 
@@ -113,13 +107,13 @@
 
 | File | Summary |
 | --- | --- |
-| [StatistiqueServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/StatistiqueServlet.java) | <code>❯ REPLACE-ME</code> |
-| [UserServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/UserServlet.java) | <code>❯ REPLACE-ME</code> |
-| [TaskServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/TaskServlet.java) | <code>❯ REPLACE-ME</code> |
-| [RequestServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/RequestServlet.java) | <code>❯ REPLACE-ME</code> |
-| [AuthServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/AuthServlet.java) | <code>❯ REPLACE-ME</code> |
-| [LogoutServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/LogoutServlet.java) | <code>❯ REPLACE-ME</code> |
-| [TagsServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/TagsServlet.java) | <code>❯ REPLACE-ME</code> |
+| [StatistiqueServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/StatistiqueServlet.java) | <code>❯ </code> |
+| [UserServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/UserServlet.java) | <code>❯ </code> |
+| [TaskServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/TaskServlet.java) | <code>❯ </code> |
+| [RequestServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/RequestServlet.java) | <code>❯ </code> |
+| [AuthServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/AuthServlet.java) | <code>❯ </code> |
+| [LogoutServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/LogoutServlet.java) | <code>❯ </code> |
+| [TagsServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/TagsServlet.java) | <code>❯ </code> |
 
 </details>
 
@@ -127,10 +121,10 @@
 
 | File | Summary |
 | --- | --- |
-| [TagRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/TagRepository.java) | <code>❯ REPLACE-ME</code> |
-| [TaskRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/TaskRepository.java) | <code>❯ REPLACE-ME</code> |
-| [RequestRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/RequestRepository.java) | <code>❯ REPLACE-ME</code> |
-| [UserRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/UserRepository.java) | <code>❯ REPLACE-ME</code> |
+| [TagRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/TagRepository.java) | <code>❯ </code> |
+| [TaskRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/TaskRepository.java) | <code>❯ </code> |
+| [RequestRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/RequestRepository.java) | <code>❯ </code> |
+| [UserRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/UserRepository.java) | <code>❯ </code> |
 
 </details>
 
@@ -138,10 +132,10 @@
 
 | File | Summary |
 | --- | --- |
-| [RequestService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/RequestService.java) | <code>❯ REPLACE-ME</code> |
-| [TaskService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/TaskService.java) | <code>❯ REPLACE-ME</code> |
-| [TagService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/TagService.java) | <code>❯ REPLACE-ME</code> |
-| [UserService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/UserService.java) | <code>❯ REPLACE-ME</code> |
+| [RequestService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/RequestService.java) | <code>❯ </code> |
+| [TaskService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/TaskService.java) | <code>❯ </code> |
+| [TagService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/TagService.java) | <code>❯ </code> |
+| [UserService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/UserService.java) | <code>❯ </code> |
 
 </details>
 
@@ -149,13 +143,13 @@
 
 | File | Summary |
 | --- | --- |
-| [index.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/index.jsp) | <code>❯ REPLACE-ME</code> |
-| [statistiques.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/statistiques.jsp) | <code>❯ REPLACE-ME</code> |
-| [tags.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/tags.jsp) | <code>❯ REPLACE-ME</code> |
-| [login.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/login.jsp) | <code>❯ REPLACE-ME</code> |
-| [test.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/test.jsp) | <code>❯ REPLACE-ME</code> |
-| [request.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/request.jsp) | <code>❯ REPLACE-ME</code> |
-| [tasks.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/tasks.jsp) | <code>❯ REPLACE-ME</code> |
+| [index.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/index.jsp) | <code>❯ </code> |
+| [statistiques.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/statistiques.jsp) | <code>❯ </code> |
+| [tags.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/tags.jsp) | <code>❯ </code> |
+| [login.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/login.jsp) | <code>❯ </code> |
+| [test.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/test.jsp) | <code>❯ </code> |
+| [request.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/request.jsp) | <code>❯ </code> |
+| [tasks.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/tasks.jsp) | <code>❯ </code> |
 
 </details>
 
@@ -163,8 +157,8 @@
 
 | File | Summary |
 | --- | --- |
-| [bootstrap.min.css](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/css/bootstrap.min.css) | <code>❯ REPLACE-ME</code> |
-| [style.css](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/css/style.css) | <code>❯ REPLACE-ME</code> |
+| [bootstrap.min.css](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/css/bootstrap.min.css) | <code>❯ </code> |
+| [style.css](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/css/style.css) | <code>❯ </code> |
 
 </details>
 
@@ -172,8 +166,8 @@
 
 | File | Summary |
 | --- | --- |
-| [navbar.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/layouts/navbar.jsp) | <code>❯ REPLACE-ME</code> |
-| [sidebar.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/layouts/sidebar.jsp) | <code>❯ REPLACE-ME</code> |
+| [navbar.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/layouts/navbar.jsp) | <code>❯ </code> |
+| [sidebar.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/layouts/sidebar.jsp) | <code>❯ </code> |
 
 </details>
 
@@ -181,7 +175,7 @@
 
 | File | Summary |
 | --- | --- |
-| [UserTest.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/test/java/service/UserTest.java) | <code>❯ REPLACE-ME</code> |
+| [UserTest.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/test/java/service/UserTest.java) | <code>❯ </code> |
 
 </details>
 
@@ -189,9 +183,9 @@
 
 | File | Summary |
 | --- | --- |
-| [catalina.policy](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/catalina.policy) | <code>❯ REPLACE-ME</code> |
-| [tomcat-users.xsd](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/tomcat-users.xsd) | <code>❯ REPLACE-ME</code> |
-| [jaspic-providers.xsd](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/jaspic-providers.xsd) | <code>❯ REPLACE-ME</code> |
+| [catalina.policy](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/catalina.policy) | <code>❯ </code> |
+| [tomcat-users.xsd](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/tomcat-users.xsd) | <code>❯ </code> |
+| [jaspic-providers.xsd](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/jaspic-providers.xsd) | <code>❯ </code> |
 
 </details>
 
@@ -199,7 +193,7 @@
 
 | File | Summary |
 | --- | --- |
-| [localhost_access_log.2024-10-18.txt](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/logs/localhost_access_log.2024-10-18.txt) | <code>❯ REPLACE-ME</code> |
+| [localhost_access_log.2024-10-18.txt](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/logs/localhost_access_log.2024-10-18.txt) | <code>❯ </code> |
 
 </details>
 
@@ -207,7 +201,7 @@
 
 | File | Summary |
 | --- | --- |
-| [MANIFEST.MF](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/out/artifacts/testmaven02_Web_exploded/META-INF/MANIFEST.MF) | <code>❯ REPLACE-ME</code> |
+| [MANIFEST.MF](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/out/artifacts/testmaven02_Web_exploded/META-INF/MANIFEST.MF) | <code>❯ </code> |
 
 </details>
 

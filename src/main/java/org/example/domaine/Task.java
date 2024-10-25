@@ -25,6 +25,7 @@ public class Task {
     private LocalDate startDate;
     private LocalDate creationDate;
     private LocalDate dueDate;
+    private boolean tokenUsed;
 
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
@@ -45,7 +46,8 @@ public class Task {
     )
     private List<Tag> tags = new ArrayList<>();
 
-
+    @OneToOne(mappedBy = "task")
+    private Request request;
 
 
 

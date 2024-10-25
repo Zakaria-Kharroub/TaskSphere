@@ -72,6 +72,7 @@ public class UserRepository {
             transaction.begin();
             em.merge(user);
             transaction.commit();
+            System.out.println("user updated");
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();

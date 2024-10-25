@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.domaine.*;
+import org.example.scheduler.RequestScheduler;
 import org.example.scheduler.TaskScheduler;
 import org.example.service.TaskService;
 import org.example.service.UserService;
@@ -25,12 +26,15 @@ public class TaskServlet extends HttpServlet {
     private UserService userService;
     private TagService tagService;
     private TaskScheduler taskScheduler;
+    private RequestScheduler requestScheduler;
 
     public void init() throws ServletException {
         taskService = new TaskService();
         userService = new UserService();
         tagService = new TagService();
         taskScheduler = new TaskScheduler();
+        requestScheduler = new RequestScheduler();
+
 
     }
 
@@ -61,7 +65,9 @@ public class TaskServlet extends HttpServlet {
 
         List<User> users = userService.getAllUsers();
 
-        List<User> filtredUser =users.stream().filter(user -> user.getRole().equals(Role.USER)).collect(Collectors.toList());
+        List<User> filtredUser =users.stream()
+                .filter(user -> user.getRole().equals(Role.USER))
+                .collect(Collectors.toList());
 
         List<Tag> tags = tagService.getAlltags();
         request.setAttribute("authUser",userAuthentifie);
@@ -74,6 +80,9 @@ public class TaskServlet extends HttpServlet {
         dispatcher.forward(request, response);
 
         taskScheduler.startScheduler();
+        requestScheduler.startSchedular();
+
+
 
 
     }
@@ -95,14 +104,14 @@ public class TaskServlet extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
-        LocalDate dueDate = LocalDate.parse(request.getParameter("dueDate"));
-
-        if (startDate.isBefore(LocalDate.now().plusDays(3))) {
-            response.getWriter().write("Start date must be at least three days after today.");
-            return;
+        if (startDate.isBefore(LocalDate.now().plusDays(3))){
+            response.getWriter().write("start date obligatoire 3 jour avance de date now");
         }
 
-
+        LocalDate dueDate = LocalDate.parse(request.getParameter("dueDate"));
+        if (dueDate.isBefore(LocalDate.now().plusDays(4))){
+            response.getWriter().write("due date obligatoire inferieur de start date");
+        }
         Long assigneeId = Long.parseLong(request.getParameter("assignee"));
         List<Long> tagIds = Stream.of(request.getParameterValues("tags"))
                 .map(Long::parseLong)
@@ -130,6 +139,7 @@ public class TaskServlet extends HttpServlet {
         task.setAssignee(assignee);
         task.setTags(tags);
         task.setStatus(TaskStatus.NOT_STARTED);
+        task.setTokenUsed(false);
 
         taskService.saveTask(task);
         response.sendRedirect("tasks");
@@ -147,10 +157,13 @@ public class TaskServlet extends HttpServlet {
         Long id = Long.parseLong(req.getParameter("id"));
         taskService.deleteTask(id);
         User authUser = (User) req.getSession().getAttribute("user");
-        if(authUser != null){
-            authUser.setTokenDelete(0);
-            userService.updateUser(authUser);
-            req.getSession().setAttribute("user",authUser);
+
+        if (authUser!=null){
+            if (authUser.getRole().equals(Role.USER) && authUser.getTokenDelete() >=1){
+                authUser.setTokenDelete(0);
+                userService.updateUser(authUser);
+                req.getSession().setAttribute("user",authUser);
+            }
         }
         resp.sendRedirect("tasks");
     }

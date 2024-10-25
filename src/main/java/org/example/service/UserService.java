@@ -1,6 +1,9 @@
 package org.example.service;
 
 import org.example.domaine.User;
+import org.example.errors.EmailExistException;
+import org.example.errors.UserIsEmptyException;
+import org.example.errors.UserIsNullException;
 import org.example.repository.UserRepository;
 
 import java.util.List;
@@ -13,9 +16,28 @@ public class UserService {
         this.userRepository = new UserRepository();
     }
 
+//    public void setUserRepository(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
+
+
+
+
     public void saveUser(User user) {
+        if (user == null) {
+            throw new UserIsNullException();
+        }
+        if (user.getName() == null || user.getName().trim().isEmpty()) {
+            throw new UserIsEmptyException();
+        }
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new EmailExistException();
+        }
+
+
         userRepository.save(user);
     }
+
 
     public List<User> getAllUsers() {
         return userRepository.getAll();

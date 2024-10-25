@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="C:\Users\Youcode\IdeaProjects\testmaven02">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="C:/Users/Youcode/IdeaProjects/testmaven02/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/postgresql-42.7.3.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/checker-qual-3.42.0.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jakarta.persistence-api-3.1.0.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/hibernate/orm/hibernate-core/6.2.6.Final/hibernate-core-6.2.6.Final.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/hibernate-core-6.2.6.Final.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jakarta.transaction-api-2.0.1.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jboss-logging-3.5.0.Final.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/hibernate-commons-annotations-6.0.6.Final.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/io/smallrye/jandex/3.0.5/jandex-3.0.5.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jandex-3.0.5.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/classmate-1.5.1.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/net/bytebuddy/byte-buddy/1.12.18/byte-buddy-1.12.18.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/byte-buddy-1.12.18.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jakarta.xml.bind-api-4.0.0.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jakarta.activation-api-2.1.0.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jaxb-runtime-4.0.2.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jaxb-core-4.0.2.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/angus-activation-2.0.0.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/txw2-4.0.2.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/istack-commons-runtime-4.1.1.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jakarta.inject-api-2.0.1.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/antlr/antlr4-runtime/4.10.1/antlr4-runtime-4.10.1.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/antlr4-runtime-4.10.1.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/io/github/cdimascio/dotenv-java/2.2.0/dotenv-java-2.2.0.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/dotenv-java-2.2.0.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/javax/servlet/jstl/1.2/jstl-1.2.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jstl-1.2.jar"/>
+    <PostResources base="C:/Users/Youcode/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jbcrypt-0.4.jar"/>
+  </Resources>
+</Context>

@@ -1,0 +1,94 @@
+:root {
+    --sidebar-bg: #2c3e50;
+    --sidebar-hover: #34495e;
+    --sidebar-active: #3498db;
+    --main-bg: #ecf0f1;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--main-bg);
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 2px 2px 10px 0 rgba(0, 0, 0, 0.01);
+    background-color: var(--sidebar-bg);
+    transition: all 0.3s;
+}
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #fff;
+    padding: 15px 25px;
+    border-left: 4px solid transparent;
+    transition: 0.3s ease;
+}
+
+.logo-dash{
+    font-weight: 500;
+    color: #fff;
+    padding: 15px 25px;
+    border-left: 4px solid transparent;
+}
+.sidebar .nav-link:hover {
+    background-color: var(--sidebar-hover);
+    border-left: 4px solid var(--sidebar-active);
+}
+.sidebar .nav-link.active {
+    background-color: var(--sidebar-active);
+    border-left: 4px solid #fff;
+}
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+.main-content {
+    margin-left: 240px;
+    padding: 20px;
+    transition: all 0.3s;
+}
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+.card:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+.table {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.table thead {
+    background-color: #34495e;
+    color: #fff;
+}
+.modal-content {
+    border-radius: 15px;
+}
+.modal-header {
+    background-color: #3498db;
+    color: #fff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}

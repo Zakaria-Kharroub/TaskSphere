@@ -1,316 +1,88 @@
-<p align="center">
-    <h1 align="center">TASKSPHERE</h1>
-<p align="center">
-	<img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white" alt="java">
-</p>
+# TaskSphere
 
-<br>
+## Contexte du Projet
 
-#####  Table of Contents
+TaskSphere a été conçu pour combler les lacunes des outils traditionnels de gestion des tâches, en offrant une plateforme performante et centrée sur l'utilisateur. En utilisant **JAKARTA EE** comme base, TaskSphere intègre des fonctionnalités avancées telles que la recherche par tags, les contraintes de planification, et des mises à jour automatisées pour simplifier et enrichir la gestion des tâches dans des environnements de travail dynamiques.
 
-- [ Overview](#-overview)
-- [ Features](#-features)
-- [ Repository Structure](#-repository-structure)
-- [ Modules](#-modules)
-- [ Getting Started](#-getting-started)
-    - [ Prerequisites](#-prerequisites)
-    - [ Installation](#-installation)
-    - [ Usage](#-usage)
-    - [ Tests](#-tests)
-- [ Project Roadmap](#-project-roadmap)
-- [ Contributing](#-contributing)
-- [ License](#-license)
-- [ Acknowledgments](#-acknowledgments)
+TaskSphere s'adresse aux individus, chefs d'équipe et managers, leur offrant des outils robustes pour la collaboration et le suivi des projets.
 
 ---
 
-##  Repository Structure
-
-```sh
-└── TaskSphere/
-    ├── conf
-    │   ├── Catalina
-    │   ├── catalina.policy
-    │   ├── catalina.properties
-    │   ├── context.xml
-    │   ├── jaspic-providers.xml
-    │   ├── jaspic-providers.xsd
-    │   ├── logging.properties
-    │   ├── server.xml
-    │   ├── tomcat-users.xml
-    │   ├── tomcat-users.xsd
-    │   └── web.xml
-    ├── logs
-    │   ├── catalina.2024-10-18.log
-    │   ├── host-manager.2024-10-18.log
-    │   ├── localhost.2024-10-18.log
-    │   ├── localhost_access_log.2024-10-18.txt
-    │   └── manager.2024-10-18.log
-    ├── out
-    │   └── artifacts
-    ├── pom.xml
-    ├── src
-    │   ├── main
-    │   └── test
-    └── web
-        └── WEB-INF
-```
+![Thumbnail 1](https://github.com/Zakaria-Kharroub/TaskSphere/blob/bf7b133dfb5a9849b58b8303a59c6186e5f956fe/tasksphere.png)
 
 ---
 
-##  Modules
+## Versions et Fonctionnalités
 
-<details closed><summary>src.main.java.org.example</summary>
+### Version 1.0.0
 
-| File | Summary |
-| --- | --- |
-| [Main.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/Main.java) | <code>❯ </code> |
+1. **Configuration de l’Environnement** :
+   - Configuration de l’IDE, du serveur d’application, de la base de données, et des outils nécessaires.
+   - Mise en place d’une structure de projet JAKARTA EE bien organisée.
+   - Adoption des bonnes pratiques de développement.
 
-</details>
+2. **Gestion des Utilisateurs (CRUD)** :
+   - **Attributs** : 
+     - ID
+     - Nom d'utilisateur
+     - Mot de passe
+     - Nom
+     - Prénom
+     - Adresse e-mail
+     - Manager
 
-<details closed><summary>src.main.java.org.example.domaine</summary>
-
-| File | Summary |
-| --- | --- |
-| [TaskStatus.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/TaskStatus.java) | <code>❯ </code> |
-| [RequestStatus.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/RequestStatus.java) | <code>❯ </code> |
-| [User.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/User.java) | <code>❯ </code> |
-| [Request.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Request.java) | <code>❯ </code> |
-| [Tag.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Tag.java) | <code>❯ </code> |
-| [Task.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Task.java) | <code>❯ </code> |
-| [Role.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/domaine/Role.java) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.main.java.org.example.scheduler</summary>
-
-| File | Summary |
-| --- | --- |
-| [RequestScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/RequestScheduler.java) | <code>❯ </code> |
-| [TaskScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/TaskScheduler.java) | <code>❯ </code> |
-| [TokenScheduler.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/scheduler/TokenScheduler.java) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.main.java.org.example.errors</summary>
-
-| File | Summary |
-| --- | --- |
-| [EmailExistException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/EmailExistException.java) | <code>❯ </code> |
-| [UserIsEmptyException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/UserIsEmptyException.java) | <code>❯ </code> |
-| [EmailFormatInvalid.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/EmailFormatInvalid.java) | <code>❯ </code> |
-| [UserIsNullException.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/errors/UserIsNullException.java) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.main.java.org.example.controller</summary>
-
-| File | Summary |
-| --- | --- |
-| [StatistiqueServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/StatistiqueServlet.java) | <code>❯ </code> |
-| [UserServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/UserServlet.java) | <code>❯ </code> |
-| [TaskServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/TaskServlet.java) | <code>❯ </code> |
-| [RequestServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/RequestServlet.java) | <code>❯ </code> |
-| [AuthServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/AuthServlet.java) | <code>❯ </code> |
-| [LogoutServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/LogoutServlet.java) | <code>❯ </code> |
-| [TagsServlet.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/controller/TagsServlet.java) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.main.java.org.example.repository</summary>
-
-| File | Summary |
-| --- | --- |
-| [TagRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/TagRepository.java) | <code>❯ </code> |
-| [TaskRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/TaskRepository.java) | <code>❯ </code> |
-| [RequestRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/RequestRepository.java) | <code>❯ </code> |
-| [UserRepository.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/repository/UserRepository.java) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.main.java.org.example.service</summary>
-
-| File | Summary |
-| --- | --- |
-| [RequestService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/RequestService.java) | <code>❯ </code> |
-| [TaskService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/TaskService.java) | <code>❯ </code> |
-| [TagService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/TagService.java) | <code>❯ </code> |
-| [UserService.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/java/org/example/service/UserService.java) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.main.webapp</summary>
-
-| File | Summary |
-| --- | --- |
-| [index.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/index.jsp) | <code>❯ </code> |
-| [statistiques.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/statistiques.jsp) | <code>❯ </code> |
-| [tags.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/tags.jsp) | <code>❯ </code> |
-| [login.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/login.jsp) | <code>❯ </code> |
-| [test.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/test.jsp) | <code>❯ </code> |
-| [request.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/request.jsp) | <code>❯ </code> |
-| [tasks.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/tasks.jsp) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.main.webapp.css</summary>
-
-| File | Summary |
-| --- | --- |
-| [bootstrap.min.css](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/css/bootstrap.min.css) | <code>❯ </code> |
-| [style.css](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/css/style.css) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.main.webapp.layouts</summary>
-
-| File | Summary |
-| --- | --- |
-| [navbar.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/layouts/navbar.jsp) | <code>❯ </code> |
-| [sidebar.jsp](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/main/webapp/layouts/sidebar.jsp) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>src.test.java.service</summary>
-
-| File | Summary |
-| --- | --- |
-| [UserTest.java](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/src/test/java/service/UserTest.java) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>conf</summary>
-
-| File | Summary |
-| --- | --- |
-| [catalina.policy](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/catalina.policy) | <code>❯ </code> |
-| [tomcat-users.xsd](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/tomcat-users.xsd) | <code>❯ </code> |
-| [jaspic-providers.xsd](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/conf/jaspic-providers.xsd) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>logs</summary>
-
-| File | Summary |
-| --- | --- |
-| [localhost_access_log.2024-10-18.txt](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/logs/localhost_access_log.2024-10-18.txt) | <code>❯ </code> |
-
-</details>
-
-<details closed><summary>out.artifacts.testmaven02_Web_exploded.META-INF</summary>
-
-| File | Summary |
-| --- | --- |
-| [MANIFEST.MF](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/out/artifacts/testmaven02_Web_exploded/META-INF/MANIFEST.MF) | <code>❯ </code> |
-
-</details>
+3. **Technologies Utilisées** :
+   - Maven
+   - JAKARTA EE
+   - Hibernate
+   - Tomcat/JBoss/GlassFish (au choix)
+   - JPA
+   - Servlets
+   - JSP
 
 ---
 
-##  Getting Started
+### Version 1.1.0
 
-###  Prerequisites
+1. **Contraintes de Planification** :
+   - Une tâche ne peut pas être créée dans le passé.
+   - Les utilisateurs doivent obligatoirement ajouter plusieurs tags à chaque tâche.
+   - La planification est limitée à un délai maximum de 3 jours à l’avance.
 
-**Java**: `version x.y.z`
+2. **Gestion des Jetons** :
+   - Les utilisateurs disposent de :
+     - **2 jetons par jour** pour remplacer une tâche attribuée par leur manager.
+     - **1 jeton par mois** pour supprimer une tâche.
+   - Supprimer une tâche créée par l’utilisateur n’affecte pas le solde des jetons.
 
-###  Installation
+3. **Règles de Gestion des Tâches** :
+   - Les utilisateurs peuvent uniquement s’attribuer des tâches.
+   - Marquer une tâche comme terminée doit obligatoirement se faire avant la date limite.
 
-Build the project from source:
-
-1. Clone the TaskSphere repository:
-```sh
-❯ git clone https://github.com/Zakaria-Kharroub/TaskSphere
-```
-
-2. Navigate to the project directory:
-```sh
-❯ cd TaskSphere
-```
-
-3. Install the required dependencies:
-```sh
-❯ mvn clean install
-```
-
-###  Usage
-
-To run the project, execute the following command:
-
-```sh
-❯ java -jar target/myapp.jar
-```
-
-###  Tests
-
-Execute the test suite using the following command:
-
-```sh
-❯ mvn test
-```
+4. **Déploiement** :
+   - Après l'implémentation des fonctionnalités ci-dessus, l’application doit être déployée sur un repository local.
 
 ---
 
-##  Project Roadmap
+### Version 1.2.0
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
+1. **Gestion Avancée des Remplacements** :
+   - Les managers peuvent remplacer une tâche par une autre, mais doivent obligatoirement l'assigner à un autre utilisateur.
+   - Ces tâches ne peuvent plus être modifiées ou supprimées par un jeton.
 
+2. **Améliorations Automatiques** :
+   - Si un manager ne répond pas à une demande de remplacement de tâche dans un délai de 12 heures, l'utilisateur concerné reçoit un double solde de jetons de modification le lendemain.
+   - Les tâches dépassant leur date limite sont automatiquement marquées comme non effectuées toutes les 24 heures.
+
+3. **Tableau de Bord pour Managers** :
+   - Vue d'ensemble des tâches assignées à leurs employés.
+   - Statistiques :
+     - Pourcentage d’achèvement par tags (semaine, mois, année).
+     - Nombre de jetons utilisés.
+
+4. **Déploiement** :
+   - Une fois les nouvelles fonctionnalités développées, l’application doit être mise à jour dans le repository local.
+  
 ---
 
-##  Contributing
-
-Contributions are welcome! Here are several ways you can contribute:
-
-- **[Report Issues](https://github.com/Zakaria-Kharroub/TaskSphere/issues)**: Submit bugs found or log feature requests for the `TaskSphere` project.
-- **[Submit Pull Requests](https://github.com/Zakaria-Kharroub/TaskSphere/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-- **[Join the Discussions](https://github.com/Zakaria-Kharroub/TaskSphere/discussions)**: Share your insights, provide feedback, or ask questions.
-
-<details closed>
-<summary>Contributing Guidelines</summary>
-
-1. **Fork the Repository**: Start by forking the project repository to your github account.
-2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
-   ```sh
-   git clone https://github.com/Zakaria-Kharroub/TaskSphere
-   ```
-3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
-   ```sh
-   git checkout -b new-feature-x
-   ```
-4. **Make Your Changes**: Develop and test your changes locally.
-5. **Commit Your Changes**: Commit with a clear message describing your updates.
-   ```sh
-   git commit -m 'Implemented new feature x.'
-   ```
-6. **Push to github**: Push the changes to your forked repository.
-   ```sh
-   git push origin new-feature-x
-   ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
-</details>
-
-<details closed>
-<summary>Contributor Graph</summary>
-<br>
-<p align="left">
-   <a href="https://github.com{/Zakaria-Kharroub/TaskSphere/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=Zakaria-Kharroub/TaskSphere">
-   </a>
-</p>
-</details>
-
----
-
-##  License
-
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
-
----
-
-##  Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
-
----
+Avec **TaskSphere**, simplifiez la gestion de vos tâches et améliorez la collaboration au sein de votre équipe !
